@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Fuggles&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Document</title>
+    <style>
+        .btn {
+            float: left;
+            background-color: rgb(30, 255, 30);
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            font-size: 30px;
+        }
+        
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: #2980B9;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+        
+        html {
+            font-family: 'Dancing Script', cursive;
+            background-image: url(try.jpg);
+            background-position: center;
+            background-size: cover;
+            background-color: blanchedalmond;
+            height: 100%;
+        }
+        
+        h1 {
+            color: #f7f9f4;
+            margin: 0px;
+        }
+        
+        .elements {
+            background-color: rgba(248, 252, 249, 0.726);
+            border: 1px solid rgba(0, 0, 0, 0.644);
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 25px;
+        }
+        
+        .content {}
+        
+        .bestel {
+            border-radius: 5px;
+        }
+        
+        fieldset {
+            border-radius: 5px;
+            border-color: white;
+            background-position: center;
+        }
+        
+        legend {
+            font-size: 30px;
+            color: rgb(0, 0, 0);
+            background-color: rgba(123, 124, 123, 0.801);
+            border-radius: 5px;
+        }
+        
+        nav {
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+            font-size: 30px;
+            color: #253504;
+            border-radius: 5px;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: rgba(153, 148, 148, 0.555);
+            line-break: loose;
+        }
+        
+        button {
+            font-family: 'Dancing Script', cursive;
+            font-size: 30px;
+            border-radius: 10px;
+            background-color: yellowgreen;
+        }
+        
+        aside {
+            font-size: 30px;
+            margin: 10px;
+        }
+        
+        aside :hover {
+            background-color: blue;
+        }
+        
+        .dropdown-contentone {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-contentone {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 260px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            right: 1px;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+        
+        .dropdown-contentone a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .shoping {
+            position: relative;
+            float: right;
+        }
+        
+        .show {
+            display: grid;
+        }
+        
+        .fa-remove {
+            float: right;
+            margin-right: 10px;
+        }
+        
+        .shoping-content {
+            margin: 10px;
+            border: 1px solid black;
+        }
+        
+        .dropdown-content * {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div id="myDropdown" class="dropdown-content">
+
+            </div>
+
+        </div>
+        <div class="shoping">
+
+            <button class="dropbtn"><i class="fa fa-shopping-cart"></i>
+                <spann class="number-items"></spann>
+            </button>
+            <div id="myDropdown" class="dropdown-contentone"></div>
+
+        </div>
+        <nav class="content">
+
+            <h1>Speisekarte Online Bestelung</h1><i class="fa fa-shoping"></i>
+        </nav>
+    </header>
+    <article>
+
+    </article>
+    <div class="jumbo"></div>
+    <script>
+        let content = document.querySelector('.content');
+        let jumbo = document.querySelector('.jumbo')
+        let btn = document.querySelector('.dropdown-content');
+        let myText;
+        let myObject;
+        async function getText(file) {
+            myObject = await fetch(file);
+            myText = await myObject.json();
+            // console.log(myText);
+
+            let list = []
+            const row = document.createElement('div');
+            for (const key in myText) {
+
+
+
+
+                for (x = 0; x < myText[key].length; x++) {
+
+                    let cey = myText[key][x];
+                    for (y = 0; y < cey.length; y++) {
+                        // console.log(cey[y]);
+
+
+                    }
+
+                }
+
+                //var desired = text.replace(/-/gi, ' ');
+
+                row.innerHTML += `<aside class="${key}">${key}</aside>`;
+
+                btn.appendChild(row);
+
+
+
+            }
+
+
+            let elements = document.querySelectorAll('aside');
+            elements.forEach(e => {
+
+                e.addEventListener('click', () => {
+
+
+
+                    let nodee = document.querySelectorAll('.elements');
+                    // console.log(nodee);
+                    for (x = 0; x < nodee.length; x++) {
+                        // console.log(nodee[x]);
+                        if (nodee[x].className = 'elements') {
+
+                            nodee[x].remove();
+                        }
+                    }
+
+                    let prop = e.classList.value;
+                    for (x = 0; x < myText[prop].length; x++) {
+                        // console.log(myText[prop][x])
+                        content.innerHTML +=
+                            `<div class = "elements " ><h4 >${ myText[prop][x]}</h4><button class="bestel">Bestelen</button></div>`;
+                    }
+                    let bestel = document.querySelectorAll('.bestel');
+                    bestel.forEach((e) => {
+                        e.addEventListener('click', (e) => {
+                            let jSpeise = e.target.previousElementSibling;
+                            let speis = jSpeise.textContent.replace(
+                                /\s*\(.*?\)\s*/g, '')
+
+                            let number = speis.replace(/[^\d.-]/g, '');
+                            let speise = speis.replace(/\d+/g, '');
+                            let speiseS = speise.slice(0, -1);
+
+                            function reverseAndAddTheDammDot(nuber) {
+                                let length = nuber.length - 1;
+                                let numbers = []
+                                for (let i = length; i >= 0; i--) {
+                                    numbers.push(nuber[i]);
+
+
+                                }
+
+
+
+                                return numbers
+                            }
+                            number = reverseAndAddTheDammDot(number);
+                            let theDot = '.';
+                            number.splice(2, 0, theDot);
+                            number = reverseAndAddTheDammDot(number);
+                            console.log(number);
+                            number = number.toString();
+                            number = number.replace(/[',]+/g, '')
+                            let dropContent = document.querySelector(
+                                '.dropdown-contentone')
+                            dropContent.innerHTML +=
+                                `<divc class = "shoping-content"><p class="bestelte-speise">${speiseS}</p>${number}€<i class="fa fa-remove"></i></div>`;
+                            for (a = 0; a < dropContent.childNodes.length; a++) {
+                                let itemsCounter = document.querySelector(
+                                    '.number-items');
+                                itemsCounter.innerHTML = a + 1;
+                            }
+
+
+
+                        })
+                    })
+
+                })
+
+            });
+
+
+
+
+        }
+
+
+
+
+
+
+
+        getText(
+            'https://script.google.com/macros/s/AKfycbx5Do3QZrrik3vl-DyD8KybmqZBi19JRuK87Bym0zlYfuWmY0xR82laT0nW-3sPTdX0HQ/exec'
+        );
+
+
+        let butt = document.querySelectorAll('.dropbtn')
+        butt.forEach((e) => {
+            e.addEventListener('click', () => {
+                e.nextElementSibling.classList.toggle("show");;
+
+                console.log(e.nextElementSibling);
+
+
+
+
+
+            });
+        });
+
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn') && event.target.nextElementSibling) {
+                let dropdowns = document.querySelector(".dropdown-content");
+                let dropdownOne = document.querySelector('.dropdown-contentone');
+
+
+
+                test(dropdownOne);
+                test(dropdowns);
+
+
+
+            }
+        }
+
+        function test(elel) {
+            if (elel.classList.contains('show')) {
+                elel.classList.remove('show');
+                console.log("works");
+            }
+        }
+    </script>
+</body>
+
+</html>
