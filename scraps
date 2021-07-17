@@ -1,0 +1,10 @@
+let elements = document.querySelectorAll('fieldset');
+            elements.forEach((e) => {
+                let prop = e.classList.value;
+                for (x = 0; x < myText[prop].length; x++) {
+                    console.log(myText[prop][x])
+                    e.innerHTML +=
+                        `<div class = "elements " ><h4 >${ myText[prop][x]}</h4><button class="bestel">Bestelen</button></div>`;
+                }
+            });
+method to display meals 

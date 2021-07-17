@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mate+SC&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<style>
+    body {
+        
+        font-family: 'Mate SC', serif;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #ecf3c61f;
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        overflow-x: hidden;
+
+
+    }
+
+    h4 {
+        margin: 0px;
+    }
+
+    .elements {
+        border-radius: 5px;
+        display: inline-block;
+        margin:3px;
+        padding: 4px;
+        background-color: #8dbf4291;
+        text-transform: capitalize;
+        border: 1px solid rgba(71, 71, 71, 0.527);
+        
+        width: 60%;
+        letter-spacing: 3px;
+
+    }
+
+    h1 {
+        font-family: 'Noto Sans JP', sans-serif;
+        text-align: center;
+    }
+
+    .hide {
+        border: 1px solid black;
+       
+    }
+
+
+
+
+    .container  {
+        width: 100%;
+        background-image: url('gyros.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size:cover;
+       
+
+        overflow: hidden;
+
+        border: 1px solid rgb(128, 126, 126);
+
+    }
+
+    .align {
+        text-align: center;
+        width: 100%;
+       
+    }
+
+    .use {
+        display: inline-block;
+        margin: 0 auto;
+        padding: 4px;
+        background-color: #4177c99a;
+        text-transform: capitalize;
+        border: 1px solid rgba(15, 15, 15, 0.466);
+        text-align:left;
+        width: 60%;
+        letter-spacing: 3px;
+        margin : 10px;
+        border-radius : 5px;
+       
+
+    }
+
+    button {
+        display: inline-block;
+        margin: 0 auto;
+        padding: 4px;
+        background-color: #d2d3d1c2;
+        text-transform: capitalize;
+        border-color: rgba(187, 184, 184, 0.705);
+        border :none;
+        border-radius:5px;
+        letter-spacing: 3px;
+    }
+    button:active{
+        border:none;
+    }
+    button:hover{
+        background-color: white;
+    }
+</style>
+
+<body>
+    <h1>Speisekarte online bestelung</h1>
+    <div class="align">
+        <div class="container">
+
+
+
+        </div>
+    </div>
+    <script>
+        let speise = {
+            kalteVorspeisen: "kalte-Vorspeisen",
+            warmeVorspeise: 'warme-Vorspeisen'
+        }
+        let kalteVorspeisen = [
+
+            ['Tzatziki (G)',
+                'pikante Qarkspeise mit knoblauch, dazu Brot',
+                '4,80€'
+            ],
+            ['Dolmadakia (G)',
+                ' gefüllte Weinblätter mit Reis mit Tzatziki',
+                ' 5.60€'
+            ],
+            ['Chtipiti (G)    ',
+                'pikante Schafskäsecreme, dazu Brot ',
+                '4,80€'
+            ],
+            ['Schafkäse (G)', 'mit Zwiebeln und Olivenöl', '6,50€']
+
+
+        ];
+        let warmeVorspeise = [
+            ['Vorspeiseteller Spezial (G)', '', '8,90€'],
+            ['Gebackener Schfskäse', 'mit Zwiebeln und knoblauch', '6,90€'],
+            ['Dicke Bohnen (G)',
+                'mit geriebenem Schafskäse und Käse überbacken',
+                '6,90€'
+            ],
+            ['Gefüllte Weinblätter (G) ',
+                'mit geriebenem Schafskäse und Käse überbacken',
+                '6,90€'
+            ],
+            ['Gegrillte Peperoni(G)', 'mit Knoblacuhsoße', '6,00€'],
+            ['Calamaresringe (A,C,G) ', 'mit Tzatziki', '7,50€'],
+            ['Zwei Garnelen Spieße (G)', 'mit Knoblauchsoße', '9,90€'],
+            ['Gebackener Camembert (G)', 'mit Preiselbeeren', '7,50€'],
+            ['Knoblauchbrot (A)', '', '3,00€']
+        ];
+
+        let data = ['kalte-Vorspeisen',
+            'warme-Vorspeisen',
+            'salate',
+            'suppen',
+            'beilagen',
+            'soßen',
+            'schnitzel-(vom-Schwein)',
+            'hackfleischgerichte',
+            'grillspieße-vom-Schwein',
+            'vom-Drehgrill',
+            'mixteller',
+            'vom-Schweinefilet',
+            'spezialitäten-vom-Rind',
+            'vom-Lamm',
+            'geflügel',
+            'fischgerichte',
+            'seniorengerichte',
+            'für-kleine-Gäste'
+        ];
+        window.onload = () => {
+
+            let container = document.querySelector('.container');
+            for (x = 0; x < data.length; x++) {
+                let text = '';
+
+                text = data[x];
+
+
+                const row = document.createElement('div');
+
+                row.classList.add(text);
+
+
+                var desired = text.replace(/-/gi, ' ');
+                row.innerHTML = `<h2 class="elements">${desired}</h2>`;
+
+                container.appendChild(row);
+
+
+            }
+            let elements = document.querySelectorAll('.elements');
+            elements.forEach(element => {
+                element.addEventListener('click', (e) => {
+
+                    for (const key in speise) {
+                        // console.log(`${speise[key]}`,e.target.parentNode.classList);
+                        if (e.target.parentNode.classList == `${speise[key]}`) {
+                            let te;
+                            te = eval(key);
+                            //  console.log(te);
+                            for (let c = 0; c < te.length; c++) {
+                                var innerArray = te[c].length;
+                             console.log(te[c]);
+                                for (let j = 0; j < innerArray; j++) {
+                                   // console.log(c, j);
+                                  if (j === 0 ){
+                                    const row = document.createElement('div');
+                                    row.classList.add('use');
+                                    let counter = c;
+                                   
+                                    
+                                     
+                                    row.innerHTML = `<h4 class="food">${te[c][j]}</h4>`;
+                                    row.innerHTML += `<h4 class="food">${te[c][j + 1]}</h4>`;
+                                    row.innerHTML += `<h4 class="food">${te[c][j + 2]}</h4>`;
+                                    
+                                    e.target.parentNode.appendChild(row);
+
+                                    //e.target.parentNode.appendChild(row);
+                                    const button = document.createElement('button');
+                                        button.textContent = 'Bestelen';
+                                        row.appendChild(button);
+
+                                }
+
+                                }
+                                
+                                
+                                //e.target.parentNode.innerHTML += te ;
+                            }
+
+
+                        }
+                    }
+
+                })
+            });
+        }
+    </script>
+</body>
+
+</html>
